@@ -38,3 +38,20 @@ else{
     }
     
 }
+`````
+
+# (3) UITextField search crash
+
+Problem : App crash log
+`````
+ *** Terminating app due to uncaught exception 'NSGenericException', reason: 'Access to UISearchBar's _searchField ivar is prohibited. This is an application bug'
+
+
+Solution : code - Objective C - Just need to remove _ ( underscore ) :)
+````
+\\ OLD Code 
+UITextField *searchField = [searchBar valueForKey:@"_searchField"]; 
+
+\\ iOS 13 Compatible code
+UITextField *searchField = [searchBar valueForKey:@"searchField"];
+````
