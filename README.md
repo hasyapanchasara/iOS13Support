@@ -40,7 +40,7 @@ else{
 }
 `````
 
-# (3) UITextField search crash
+# (3) UITextField searchBar valueForKey crash
 
 Problem : App crash log
 `````
