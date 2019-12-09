@@ -19,6 +19,7 @@ Problem : App crash log
 *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'App called -statusBar or -statusBarWindow on UIApplication: this code must be changed as there's no longer a status bar or status bar window. Use the statusBarManager object on the window scene instead.'
 ````
 
+
 Solution : code - Objective C
 ````
 if (@available(iOS 13, *)){
@@ -44,7 +45,7 @@ else{
 Problem : App crash log
 `````
  *** Terminating app due to uncaught exception 'NSGenericException', reason: 'Access to UISearchBar's _searchField ivar is prohibited. This is an application bug'
-
+`````
 
 Solution : code - Objective C - Just need to remove _ ( underscore ) :)
 ````
