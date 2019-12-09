@@ -11,3 +11,30 @@ With quick support, you can add below key and value to your Info.plist file to r
 <key>UIUserInterfaceStyle</key>
 <string>Light</string>
 ```
+
+# (2) Set status bar color 
+If you face any such app crash for startus bar like below. You can check iOS 13 condition and apply status bar color this way.
+
+Problem : App crash log
+````
+*** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'App called -statusBar or -statusBarWindow on UIApplication: this code must be changed as there's no longer a status bar or status bar window. Use the statusBarManager object on the window scene instead.'
+````
+
+Solution : code - Objective C
+````
+if (@available(iOS 13, *)){
+
+    UIView *statusBar = [[UIView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame] ;
+    statusBar.backgroundColor = [UIColor clearColor]; //set whatever color you like
+    [[UIApplication sharedApplication].keyWindow addSubview:statusBar];
+
+}
+else{
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = [UIColor clearColor]; //set whatever color you like
+    }
+    
+}
